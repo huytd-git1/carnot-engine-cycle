@@ -96,15 +96,25 @@ Mô hình khảo sát một lượng khí lý tưởng ($n$ mol) chứa trong xi
 - Tổng biến thiên nội năng toàn chu trình:
   $$\Delta U_{cycle} = \Delta U_{1\to 2} + \Delta U_{2\to 3} + \Delta U_{3\to 4} + \Delta U_{4\to 1} = 0$$
 
+### Sơ đồ dòng năng lượng Sankey & Mối liên hệ với đồ thị p–V
+- **Nguồn nóng $T_1$ ($T_h$, $T_H$):** Cung cấp nhiệt lượng $Q_1$ ($Q_h$, $Q_H$) trong quá trình giãn nở đẳng nhiệt $1 \to 2$ (hoặc $M \to N$).
+- **Động cơ nhiệt (Heat Engine):** Hệ làm việc theo chu trình thuận nghịch khép kín.
+- **Công có ích $W = Q_1 - Q_2$ ($W = Q_h - Q_c$):** Nhánh rẽ sang phải đại diện cho phần nhiệt năng biến thành cơ năng có ích, đúng bằng diện tích khép kín trên đồ thị $p–V$.
+- **Nhiệt thải $Q_2$ ($Q_c$, $|Q_C|$):** Nhánh đi xuống đáy truyền vào nguồn lạnh $T_2$ ($T_c$, $T_C$) trong quá trình nén đẳng nhiệt $3 \to 4$ (hoặc $O \to P$).
+- **Định luật II:** Không thể loại bỏ nhánh nhiệt thải $Q_2$. Mọi động cơ nhiệt phải thải nhiệt cho nguồn lạnh ($Q_2 > 0$).
+- Bề rộng nhánh mũi tên: $\text{Bề rộng } Q_h = \text{Bề rộng } W + \text{Bề rộng } Q_c$.
+
 ---
 
 ## 4. Cấu Trúc Mã Nguồn
 
 ```
 carnot-engine-cycle/
+├── public/
+│   └── images/                  # Hình ảnh giáo trình kinh điển đối chiếu
 ├── index.html                   # HTML gốc, SEO meta tags, Google Fonts
 ├── package.json                 # Cấu hình dự án React + TypeScript + Vite
-├── vite.config.ts               # Cấu hình Vite
+├── vite.config.ts               # Cấu hình Vite (base: './')
 ├── tsconfig.json                # Cấu hình TypeScript
 ├── src/
 │   ├── main.tsx                 # Điểm khởi tạo ReactDOM
@@ -123,6 +133,7 @@ carnot-engine-cycle/
 │       ├── TimelineController.tsx # Thanh kéo tiến trình và nút nhảy trực tiếp quá trình
 │       ├── MetricsCards.tsx     # Thẻ chỉ số chu trình (hiệu suất, QH, |QC|, Wnet)
 │       ├── CycleExplanation.tsx # Giải thích động cơ chế vật lý & bảng công thức mở rộng
+│       ├── EnergyFlowDiagram.tsx # Sơ đồ dòng năng lượng Sankey tương tác & ảnh đối chiếu
 │       └── StateTables.tsx      # Bảng 4 trạng thái và bảng cân bằng năng lượng
 └── README.md                    # Tài liệu hướng dẫn chi tiết
 ```

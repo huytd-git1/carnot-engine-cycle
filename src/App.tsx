@@ -10,6 +10,7 @@ import { TSDiagram } from './components/TSDiagram';
 import { TimelineController } from './components/TimelineController';
 import { CycleExplanation } from './components/CycleExplanation';
 import { StateTables } from './components/StateTables';
+import { EnergyFlowDiagram } from './components/EnergyFlowDiagram';
 
 export const App: React.FC = () => {
   // Thermodynamic cycle inputs
@@ -202,12 +203,18 @@ export const App: React.FC = () => {
         />
       </section>
 
-      {/* 5. Bottom Section: Explanations & Data Tables */}
+      {/* 5. Bottom Section: Explanations, Energy Flow & Data Tables */}
       <section className="bottom-dashboard" aria-label="Giải thích và bảng số liệu">
-        <CycleExplanation
-          cycle={cycleData}
-          instantState={instantState}
-        />
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
+          <CycleExplanation
+            cycle={cycleData}
+            instantState={instantState}
+          />
+          <EnergyFlowDiagram
+            cycle={cycleData}
+            instantState={instantState}
+          />
+        </div>
         <StateTables
           cycle={cycleData}
           instantState={instantState}
